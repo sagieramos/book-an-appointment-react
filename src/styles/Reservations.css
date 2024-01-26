@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.color-gray {
+    color: #adadad;
+    font-weight: 700;
+}
+
+.bg-gray {
+    background-color: #E2E3E5;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    min-width: 798px;
+}
+
+.nav {
+    flex: 0.2;
+    border: 1px solid red;
+}
+
+.reservations {
+    flex: 0.8;
+    border: 1px solid blue;
+    padding-top: 50px;
+}
+
+.reservations h1 {
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: 2.5rem;
+    color: #292929;
+}
+
+.reservation-lists {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #eee;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cards:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.cards p {
+    text-align: left;
+    padding: 10px;
+}
+
+.label {
+    font-weight: bold;
+    margin-right: 10px;
+    display: inline-block;
+    width: 150px;
+}
+
+.next-icon {
+    display: flex;
+    font-size: 1.4rem;
+    align-self: center;
+}
+
+button {
+    border: none;
+}
+
+.cancel-btn {
+    background-color: #98BF11;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.cancel-btn:hover {
+    background-color: #7aae0c;
+}
+
