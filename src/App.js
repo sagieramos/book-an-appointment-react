@@ -1,13 +1,20 @@
-
+import React from 'react';
 import './App.css';
-import Reservations from './Reservations';
+import { Routes, Route, Link } from 'react-router-dom';
+import Vehicles from './components/Vehicles';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <Reservations />
+      <header className="App-header">
+        <nav>
+          <Link to="/">Vehicles</Link>
+        </nav>
+      </header>
+      <Routes>
+        <Route path="/" element={<Vehicles />} />
+      </Routes>
     </div>
   );
 }
-
-export default App;
+export default App; 
