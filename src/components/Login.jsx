@@ -1,51 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { loginUser } from '../redux/slices/profileSlice';
 import style from './Authentication.module.css';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading, error, user } = useSelector((state) => state.profile);
   const [credentials, setCredentials] = useState({ login: '', password: '' });
-  const [showPassword, setShowPassword] = useState(false);  
-  
+  const [showPassword, setShowPassword] = useState(false);
+
   useEffect(() => {
     if (user) {
       navigate('/');
     }
-  }, [user, navigate]);  
-  
+  }, [user, navigate]);
+
   const handleChange = (e) => {
     setCredentials((prevCredentials) => ({
       ...prevCredentials,
       [e.target.name]: e.target.value,
     }));
-  };  
-  
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch(loginUser(credentials));
-  };  
-  
+  };
+
   const toggleShowPassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
-  };  
-  
-  const msg = error || "";
-  
+  };
+
+  const msg = error || '';
+
   return (
     <div className={style['section-auth-container']}>
-      <div className={`${style.color} ${style['color-1']}`}></div>
-      <div className={`${style.color} ${style['color-2']}`}></div>
-      <div className={`${style.color} ${style['color-3']}`}></div>
+      <div className={`${style.color} ${style['color-1']}`} />
+      <div className={`${style.color} ${style['color-2']}`} />
+      <div className={`${style.color} ${style['color-3']}`} />
       <div className={style.box}>
         <div className={style.container}>
           <h2 className={style.heading}>Login Form</h2>
           {loading && (
-            <div >
+            <div>
               <p className={style['color-color']}>Loading...</p>
             </div>
           )}
@@ -57,7 +57,7 @@ const Login = () => {
               </div>
             </div>
           )} */}
-          {error && <p className={style['error-msg']} >{msg}</p>}
+          {error && <p className={style['error-msg']}>{msg}</p>}
           <form onSubmit={handleLogin} className={style.form}>
             <input
               type="text"
@@ -77,6 +77,13 @@ const Login = () => {
               <div
                 className={style['password-toggle']}
                 onClick={toggleShowPassword}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    toggleShowPassword();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
               >
                 {showPassword ? <FaEye /> : <FaEyeSlash />}
               </div>
@@ -84,12 +91,15 @@ const Login = () => {
             <button type="submit" disabled={loading} className={style['submit-btn']}>
               Log In
             </button>
-            <p>Don't have an accout? <button onClick={() => {navigate('/signup')}}>Sign Up</button></p>
+            <p>
+              Don`&apos;`t have an accout?
+              <button type="button" onClick={() => { navigate('/signup'); }}>Sign Up</button>
+            </p>
           </form>
         </div>
       </div>
     </div>
-    
+
   );
 };
 
