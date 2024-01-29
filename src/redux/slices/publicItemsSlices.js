@@ -30,7 +30,8 @@ export const fetchItems = createAsyncThunk('items/fetchItems', async ({ query, p
   };
 
   const response = await axios.request(config);
-  return response.data;
+  if (response.status === 200)
+    return response.data;
 });
 
 const publicItemsSlice = createSlice({
