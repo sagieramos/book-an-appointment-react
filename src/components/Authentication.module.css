@@ -1,0 +1,242 @@
+.section-auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.color {
+  position: absolute;
+  z-index: -1;
+  filter: blur(120px);
+}
+
+.color-1 {
+  top: 0;
+  left: 8rem;
+  width: 100rem;
+  height: 20rem;
+  background-color: #ff359b;
+}
+
+.color-2 {
+  bottom: 0;
+  right: 1rem;
+  width: 100rem;
+  height: 20rem;
+  background-color: #fffd87;
+}
+
+.color-3 {
+  left: 20rem;
+  top: 15rem;
+  width: 50rem;
+  height: 40rem;
+  background-color: #00d2ff;
+}
+
+.box {
+  position: relative;
+}
+
+.container {
+  position: relative;
+  width: 40rem;
+  min-height: 35rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.heading {
+  position: relative;
+  margin-bottom: 4rem;
+  color: white;
+  font-size: 2.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.heading::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+  width: 8rem;
+  height: 4px;
+  background-color: #fff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.form *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.form input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  font-size: 1.6rem;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-container input {
+  margin-bottom: 0;
+}
+
+.form input::placeholder {
+  color: #fff;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 20px;
+  top: 48%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #000;
+  font-size: 1.6rem;
+}
+
+.submit-btn {
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+  border: none;
+  padding: 1rem 2.8rem;
+  color: #777;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+.form p {
+  font-weight: 600;
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.form p button {
+  text-decoration: underline;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: blue;
+  cursor: pointer;
+}
+
+.error-msg {
+  color: red;
+}
+
+.form select {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  font-size: 1.6rem;
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  appearance: none;
+  background-clip: padding-box; 
+  cursor: pointer;
+}
+
+.form select::after {
+  content: '\25BC'; 
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.form select option {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #777;
+}
+
+
+.form select:focus option {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #777;
+}
+
+.form .error-message {
+  color: red;
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Style for the modal content */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Style for the loading spinner */
+.spinner {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-top: 8px solid #fff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.color-color {
+  color: red;
+}
