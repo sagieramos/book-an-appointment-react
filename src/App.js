@@ -7,6 +7,9 @@ import Login from './components/Login';
 import { loginUser, logoutUser } from './redux/slices/profileSlice';
 import url from './apiDomain.json';
 import Registration from './components/Registration';
+import Vehicles from './components/Vehicles';
+
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -72,11 +75,11 @@ const App = () => {
       </header>
       
       <Routes>
-        <Route path="/" element={<p>Vehicles</p>} />
+        <Route path="/" element={<Vehicles />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Registration />} />
+        
       </Routes>
-
     </div>
   );
 }

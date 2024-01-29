@@ -4,8 +4,10 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import store from './redux/store';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 import { HashRouter as Router } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -25,4 +27,4 @@ root.render(
 
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
-reportWebVitals();
+// reportWebVitals();
