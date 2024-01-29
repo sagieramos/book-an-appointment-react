@@ -2,10 +2,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import publicItemsReducer from './slices/publicItemsSlices';
 
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     items: publicItemsReducer,
   },
 });
 
-export default store;
