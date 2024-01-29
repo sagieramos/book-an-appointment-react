@@ -1,60 +1,71 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Carousel } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { fetchCars, addCar } from '../Redux/CarsSlice';
-import AddCar from './AddCar';
-
+import { Link } from 'react-router-dom';
+import { fetchItems } from '../redux/slices/publicItemsSlices';
+import api from '../apiDomain.json'
+import car from '../car.jpg'
 const Vehicles = () => {
   const dispatch = useDispatch();
-  const vehicles = useSelector((state) => state.car);
-  const [isAddCarOpen, setIsAddCarOpen] = useState(false);
-
+  const { items, loading, error, totalPages } = useSelector((state) => state.items);
+  const { user } = useSelector((state) => state.profile);
+  const [page, setPage] = useState(1);
+  const perPage = 12
   useEffect(() => {
-    if (vehicles.length === 0) {
-      dispatch(fetchCars());
+    dispatch(fetchItems({ query: "", per_page: perPage, currentPage: page }));
+  }, [dispatch, page, perPage]);
+  const handlePreviousPage = () => {
+    if (page > 1) {
+      setPage(page - 1);
     }
-  }, [dispatch, vehicles.length]);
-
-  const handleAddCar = (newCarData) => {
-    dispatch(addCar(newCarData))
-      .then(() => {
-        setIsAddCarOpen(false);
-        dispatch(fetchCars());
-      })
-      .catch((error) => {
-        console.error('Error adding car:', error);
-      });
   };
-
+  const handleNextPage = () => {
+    if (page < totalPages) {
+      setPage(page + 1);
+    }
+  };
+  const renderItems = () => {
+    return items.map(({ 
+      id, image_url, name, total_amount_payable, duration, apr_representative,
+      finance_fee, option_to_purchase_fee, you_reserve, reservation_count, reserving_usernames }) => (
+      <li key={id}>
+        <img
+          src={image_url && image_url ? `${api.apiDomain}/${image_url}` : car}
+          alt={name}
+          style={{ width: '50px', height: '50px' }}
+        />
+        <h3>{name}</h3>
+        <p>Total Amount Payable: {total_amount_payable}</p>
+        <p>Duration: {duration}</p>
+        <p>APR Representative: {apr_representative}</p>
+        <p>Finance Fee: {finance_fee}</p>
+        <p>Option to Purchase Fee: {option_to_purchase_fee}</p>
+        {user && <p>You Reserve: {you_reserve}</p>}
+        {user?.admin && <p>Reservation Count: {reservation_count}</p>}
+        <Link to={`/item/${id}`}>more</Link>
+        <hr />
+      </li>
+    ));
+  };
+  
+  
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
   return (
-    <div className="main-page">
-      <div className="vehiclesDiv">
-        <h1>CARS ON SHOWROOM</h1>
-        <h2>Please select a Car</h2>
-        <Carousel interval={null} indicators={false}>
-          {vehicles.map((veh) => (
-            <Carousel.Item key={veh.id}>
-              <Link className="details-link" to={`/details/${veh.id}`}>
-                <div>
-                  <img src={veh.img} className="vehicleImg" alt="" />
-                  <h3>{veh.name}</h3>
-                  <p>******************************</p>
-                  <p>{veh.description}</p>
-                </div>
-              </Link>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+    <div>
+      <h2>Item List</h2>
+      <ul>
+        {renderItems()}
+      </ul>
+      <div>
+        <p>{page}/{totalPages}</p>
+        <button type="button" onClick={handlePreviousPage} disabled={page === 1}>Previous Page</button>
+        <button type="button" onClick={handleNextPage} disabled={page === totalPages}>Next Page</button>
       </div>
-      <AddCar
-        isOpen={isAddCarOpen}
-        onClose={() => setIsAddCarOpen(false)}
-        onAddCar={handleAddCar}
-      />
     </div>
   );
 };
-
 export default Vehicles;
