@@ -9,7 +9,7 @@ import { logoutUser, me } from './redux/slices/profileSlice';
 import Registration from './components/Registration';
 import Vehicles from './components/Vehicles';
 import ItemForm from './components/ItemForm';
-import ItemShow from './components/ItemShow';
+import ItemDetails from './components/ItemDetails';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Registration />} />
         <Route path="/items/new" element={<ItemForm />} />
-        <Route path="/items/:id" element={<ItemShow />} />
+        <Route path="/item/:id" element={<ItemDetails />} />
       </Routes>
     </div>
   );
