@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
-import car from '../car.jpg';
+import car from '../assets/images/car.jpg';
+import backbtn from '../assets/images/backbtn.svg';
 
 const ItemDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.profile);
+  const location = useLocation();
   const [item, setItem] = useState(null);
   const [reserveDate, setReserveDate] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
@@ -91,12 +93,22 @@ const ItemDetails = () => {
     }
   };
 
+  const isMatchingUrl = () => new RegExp(`^/${user.username}/item/\\d+$`).test(location.pathname);
+  const today = new Date().toISOString().split('T')[0];
+
   if (!item) {
     return <p>Loading...</p>;
   }
 
   return (
     <div>
+      <div>
+        {!isMatchingUrl() && (
+          <button type="button" onClick={() => navigate(-1)}>
+            <img src={backbtn} alt="back" />
+          </button>
+        )}
+      </div>
       <h2>Item Details</h2>
       <img
         src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
@@ -149,6 +161,7 @@ const ItemDetails = () => {
         <input
           type="date"
           value={reserveDate}
+          min={today}
           onChange={(e) => setReserveDate(e.target.value)}
         />
         {validationMessage && <p style={{ color: 'red' }}>{validationMessage}</p>}
@@ -159,11 +172,11 @@ const ItemDetails = () => {
           Delete
         </button>
       )}
-      <div>
-        <button type="button" onClick={() => navigate(-1)}>
-          Back
-        </button>
-      </div>
+      {isMatchingUrl() && user?.admin && (
+      <button type="button" onClick={() => navigate(`/${user.username}/item/new`)}>
+        Add new
+      </button>
+      )}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { fetchReservations } from '../redux/slices/reservationSlice';
 import api from '../apiDomain.json';
-import car from '../car.jpg';
+import car from '../assets/images/car.jpg';
 
 const ReservationsList = () => {
   const { reservations } = useSelector((state) => state.reservations);

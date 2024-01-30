@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import api from '../apiDomain.json';
-import car from '../car.jpg';
+import car from '../assets/images/car.jpg';
 
 const ReservationDetails = () => {
   const { id } = useParams();
