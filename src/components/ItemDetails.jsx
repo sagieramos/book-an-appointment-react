@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
 import car from '../car.jpg';
 
@@ -12,6 +13,7 @@ const ItemDetails = () => {
   const [item, setItem] = useState(null);
   const [reserveDate, setReserveDate] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchItem = async () => {
@@ -39,7 +41,8 @@ const ItemDetails = () => {
         },
       });
       if (response.status === 200) {
-        navigate(`/${user.username}/reservations/${response.data.reservation.id}`);
+        dispatch(fetchItems());
+        navigate('/');
       }
     } catch (error) {
       throw ('Error deleting item:', error);

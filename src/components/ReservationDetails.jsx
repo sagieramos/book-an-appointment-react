@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import api from '../apiDomain.json';
+import car from '../car.jpg';
 
 const ReservationDetails = () => {
   const { id } = useParams();
@@ -43,32 +44,24 @@ const ReservationDetails = () => {
 
   return (
     <div>
-      <h2>Reservation Details</h2>
       <p>
-        Reservation ID:
-        {reservation.id}
-      </p>
-      <p>
-        Customer ID:
-        {reservation.customer_id}
-      </p>
-      <p>
-        Reserved for Use Date:
+        Booked for:
         {reservation.reserve_for_use_date}
       </p>
       <p>
         Created At:
         {reservation.created_at}
       </p>
-      <p>
-        Updated At:
-        {reservation.updated_at}
-      </p>
 
       <h3>Items</h3>
       <ul>
         {items.map((item) => (
           <li key={item.id}>
+            <img
+              src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
+              alt={item.name}
+              style={{ width: '100px', height: '100px' }}
+            />
             <p>
               Name:
               {item.name}
@@ -77,10 +70,7 @@ const ReservationDetails = () => {
               Description:
               {item.description}
             </p>
-            <p>
-              City:
-              {item.city}
-            </p>
+
             <button type="button" onClick={() => navigate(`/item/${item.id}`)}>About Car</button>
           </li>
         ))}

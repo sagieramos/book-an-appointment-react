@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import nigeriaCities from '../nigeriaCities.json';
+import api from '../apiDomain.json';
 
 const ItemForm = () => {
   const { user } = useSelector((state) => state.profile);
@@ -47,7 +48,7 @@ const ItemForm = () => {
     formData.append('item[apr_representative]', parseFloat(aprRepresentative));
 
     try {
-      const response = await axios.post('http://localhost:4000/api/v1/s_admin/items', formData, {
+      const response = await axios.post(`${api.apiDomain}/api/v1/${user?.username}/items`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: authToken,

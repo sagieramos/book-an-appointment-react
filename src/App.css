@@ -20,3 +20,10 @@ body {
   scroll-behavior: smooth;
 }
 
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+}

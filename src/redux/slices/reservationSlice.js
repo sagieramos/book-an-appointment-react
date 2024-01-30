@@ -15,7 +15,7 @@ const initialState = {
 
 export const fetchReservations = createAsyncThunk('reservations/fetchReservations', async ({
   query, username, perPage, page,
-}) => {
+}, thunkAPI) => {
   const authToken = localStorage.getItem('authorization_token');
   const config = {
     method: 'get',
@@ -35,7 +35,7 @@ export const fetchReservations = createAsyncThunk('reservations/fetchReservation
   const response = await axios.request(config);
   if (response.status === 200) return response.data;
 
-  return null;
+  return thunkAPI.rejectWithValue(response.data);
 });
 
 const reservationSlice = createSlice({

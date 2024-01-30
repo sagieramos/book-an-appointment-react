@@ -48,7 +48,7 @@ const App = () => {
           <Link to="/">Vehicles</Link>
           {!alreadyLogin && <Link to="/login">Login</Link>}
           {!alreadySignup && <Link to="/signup">Signup</Link>}
-          <Link to="/items/new">Add Item</Link>
+          {user?.admin && <Link to="/items/new">Add Item</Link>}
           {user && <Link to={`/${user?.username}/reservations`}>Reservations</Link>}
           {user && <button type="button" onClick={handleLogout}>Logout</button>}
         </nav>
@@ -60,10 +60,14 @@ const App = () => {
         <Route path="/" element={<Vehicles />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Registration />} />
-        <Route path="/items/new" element={<ItemForm />} />
+        {user?.username && <Route path="/items/new" element={<ItemForm />} />}
         <Route path="/item/:id" element={<ItemDetails />} />
-        <Route path="/:username/reservations" element={<ReservationsList />} />
-        <Route path="/:username/reservations/:id" element={<ReservationDetails />} />
+        {user?.username && (
+        <>
+          <Route path="/:username/reservations" element={<ReservationsList />} />
+          <Route path="/:username/reservations/:id" element={<ReservationDetails />} />
+        </>
+        ) }
       </Routes>
     </div>
   );
