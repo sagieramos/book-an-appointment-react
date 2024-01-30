@@ -8,7 +8,7 @@ import car from '../assets/images/car.jpg';
 import backbtn from '../assets/images/backbtn.svg';
 
 const ItemDetails = () => {
-  const { username, id } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.profile);
   const location = useLocation();
@@ -93,7 +93,7 @@ const ItemDetails = () => {
     }
   };
 
-  const isMatchingUrl = () => new RegExp(`^/${username}/item/\\d+$`).test(location.pathname);
+  const isMatchingUrl = () => new RegExp(`^/${user.username}/item/\\d+$`).test(location.pathname);
   const today = new Date().toISOString().split('T')[0];
 
   if (!item) {
@@ -103,9 +103,11 @@ const ItemDetails = () => {
   return (
     <div>
       <div>
-        <button type="button" onClick={() => navigate(-1)}>
-          {isMatchingUrl() ? 'Add more' : <img src={backbtn} alt="back" />}
-        </button>
+        {!isMatchingUrl() && (
+          <button type="button" onClick={() => navigate(-1)}>
+            <img src={backbtn} alt="back" />
+          </button>
+        )}
       </div>
       <h2>Item Details</h2>
       <img
@@ -169,6 +171,11 @@ const ItemDetails = () => {
         <button type="button" onClick={handleDelete}>
           Delete
         </button>
+      )}
+      {isMatchingUrl() && user?.admin && (
+      <button type="button" onClick={() => navigate(`/${user.username}/item/new`)}>
+        Add new
+      </button>
       )}
     </div>
   );
