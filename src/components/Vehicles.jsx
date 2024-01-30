@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
-import car from '../car.jpg';
+import car from '../assets/images/car.jpg';
 
 const Vehicles = () => {
   const dispatch = useDispatch();

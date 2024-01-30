@@ -56,7 +56,7 @@ const ItemForm = () => {
       });
 
       if (response.status === 201) {
-        navigate(`${user?.username}/item/${response.data.data.id}`);
+        navigate(`/${user?.username}/item/${response.data.data.id}`);
 
         setName('');
         setDescription('');
