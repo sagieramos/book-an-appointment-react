@@ -11,8 +11,7 @@ const initialState = {
 const me = createAsyncThunk('profile/me', async () => {
   const authToken = localStorage.getItem('authorization_token');
 
-  if (!authToken) 
-    return null;
+  if (!authToken) { return null; }
 
   const config = {
     method: 'get',
@@ -21,10 +20,9 @@ const me = createAsyncThunk('profile/me', async () => {
       Authorization: authToken,
     },
   };
-    const response = await axios.request(config);
-    if (response.status === 200) 
-      return response.data.data;
-    return null;
+  const response = await axios.request(config);
+  if (response.status === 200) return response.data.data;
+  return null;
 });
 
 const loginUser = createAsyncThunk('profile/login', async (credentials) => {
@@ -45,13 +43,13 @@ const loginUser = createAsyncThunk('profile/login', async (credentials) => {
     },
     data,
   };
-    const response = await axios.request(config);
-    if (response.status === 200) {
-      const authToken = response.headers.authorization;
-      localStorage.setItem('authorization_token', authToken);
-      return response.data.data;
-    }
-    return null;
+  const response = await axios.request(config);
+  if (response.status === 200) {
+    const authToken = response.headers.authorization;
+    localStorage.setItem('authorization_token', authToken);
+    return response.data.data;
+  }
+  return null;
 });
 
 const signupUser = createAsyncThunk('profile/signup', async (userData) => {
@@ -78,20 +76,20 @@ const signupUser = createAsyncThunk('profile/signup', async (userData) => {
       'Content-Type': 'application/json',
     },
     data,
-  }; 
-    const response = await axios.request(config);
-    const authToken = response.headers.authorization;
-    localStorage.setItem('authorization_token', authToken); return response.data.data;
+  };
+  const response = await axios.request(config);
+  const authToken = response.headers.authorization;
+  localStorage.setItem('authorization_token', authToken); return response.data.data;
 });
 
 const logoutUser = createAsyncThunk('profile/logout', async () => {
   const authToken = localStorage.getItem('authorization_token');
-    await axios.delete(`${url.apiDomain}/auth/logout`, {
-      headers: {
-        Authorization: authToken,
-      },
-    });
-    return null;
+  await axios.delete(`${url.apiDomain}/auth/logout`, {
+    headers: {
+      Authorization: authToken,
+    },
+  });
+  return null;
 });
 
 const profileSlice = createSlice({

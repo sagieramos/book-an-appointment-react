@@ -37,16 +37,6 @@ const Vehicles = () => {
       />
       <h3>{n.name}</h3>
       <p>
-        Description:
-        {' '}
-        {n.description}
-      </p>
-      <p>
-        City:
-        {' '}
-        {n.city}
-      </p>
-      <p>
         Finance Fee:
         {' '}
         {n.finance_fee}
@@ -71,23 +61,6 @@ const Vehicles = () => {
         {' '}
         {n.apr_representative}
       </p>
-      <p>
-        Created At:
-        {' '}
-        {n.created_at}
-      </p>
-      <p>
-        Updated At:
-        {' '}
-        {n.updated_at}
-      </p>
-      {user?.admin && (
-        <p>
-          Reservation Count:
-          {' '}
-          {n.reservation_count}
-        </p>
-      )}
       {user && (
       <p>
         You Reserve:

@@ -25,7 +25,7 @@ const ItemDetails = () => {
           setItem(response.data.data);
         }
       } catch (error) {
-        console.error('Error fetching item:', error);
+        throw ('Error fetching item:', error);
       }
     };
     fetchItem();
@@ -42,7 +42,7 @@ const ItemDetails = () => {
         navigate(`/${user.username}/reservations/${response.data.reservation.id}`);
       }
     } catch (error) {
-      console.error('Error deleting item:', error);
+      throw ('Error deleting item:', error);
     }
   };
 
@@ -84,7 +84,7 @@ const ItemDetails = () => {
         navigate(`/${user.username}/reservations/${response.data.reservation.id}`);
       }
     } catch (error) {
-      console.error('Error creating reservation:', error);
+      throw ('Error creating reservation:', error);
     }
   };
 

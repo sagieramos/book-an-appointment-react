@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import api from '../apiDomain.json';
 
-const ReservationShow = () => {
-  const { reservationId } = useParams();
+const ReservationDetails = () => {
+  const { id } = useParams();
   const [reservation, setReservation] = useState(null);
   const [items, setItems] = useState([]);
+  const { user } = useSelector((state) => state.profile);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchReservationData = async () => {
       try {
-        const authToken = localStorage.getItem('authorization_token');
-
         const response = await axios.get(
-          `${api.apiDomain}/reservations/${reservationId}`,
+          `${api.apiDomain}/api/v1/${user?.username}/reservations/${id}`,
           {
             headers: {
-              Authorization: authToken,
-              'Content-Type': 'application/json',
+              Authorization: localStorage.getItem('authorization_token'),
             },
           },
         );
@@ -30,12 +30,12 @@ const ReservationShow = () => {
         setReservation(reservation);
         setItems(items);
       } catch (error) {
-        throw ('Error fetching reservation data:', error);
+        throw new Error('Error fetching reservation data:', error);
       }
     };
 
     fetchReservationData();
-  }, [reservationId]);
+  }, [id, user]);
 
   if (!reservation) {
     return <div>Loading...</div>;
@@ -81,11 +81,13 @@ const ReservationShow = () => {
               City:
               {item.city}
             </p>
+            <button type="button" onClick={() => navigate(`/item/${item.id}`)}>About Car</button>
           </li>
         ))}
       </ul>
+      <button type="button" onClick={() => navigate(-1)}>Back</button>
     </div>
   );
 };
 
-export default ReservationShow;
+export default ReservationDetails;

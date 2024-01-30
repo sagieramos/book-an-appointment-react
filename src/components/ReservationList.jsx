@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchReservations } from '../redux/slices/reservationSlice';
 
 const ReservationsList = () => {
   const { reservations } = useSelector((state) => state.reservations);
   const { user } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchReservations({
-      query: '', username: user?.username, per_page: 12, page: 1,
+      query: '', username: user?.username, perPage: 12, page: 1,
     }));
   }, [dispatch, user?.username]);
 
@@ -61,6 +63,14 @@ const ReservationsList = () => {
               </li>
             ))}
           </ul>
+          <button
+            type="button"
+            onClick={() => navigate(`/${user.username}/reservations/${reservation.id}`)}
+          >
+            {' '}
+            More Details
+            {' '}
+          </button>
           <hr />
         </div>
       ))}

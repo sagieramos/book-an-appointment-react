@@ -13,7 +13,9 @@ const initialState = {
   totalCount: 0,
 };
 
-export const fetchItems = createAsyncThunk('items/fetchItems', async ({ query, perPage, currentPage }) => {
+export const fetchItems = createAsyncThunk('items/fetchItems', async (
+  { query, perPage, currentPage }, thunkAPI,
+) => {
   const authToken = localStorage.getItem('authorization_token');
   const config = {
     method: 'get',
@@ -30,8 +32,9 @@ export const fetchItems = createAsyncThunk('items/fetchItems', async ({ query, p
   };
 
   const response = await axios.request(config);
-  if (response.status === 200)
-    return response.data;
+  if (response.status === 200) return response.data;
+
+  return thunkAPI.rejectWithValue(response.data);
 });
 
 const publicItemsSlice = createSlice({
