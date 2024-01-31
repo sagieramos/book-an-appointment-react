@@ -1,7 +1,10 @@
 .App {
   text-align: center;
   min-height: 100vh;
-  padding: 2rem 0;
+}
+
+.App:not(:first-child) {
+  padding-top: -100vh;
 }
 
 * {
@@ -62,11 +65,11 @@ ul {
 }
 
 .App-header {
-  position: absolute;
+  position: sticky;
   left: 0;
   top: 0;
   width: 16vw;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(5px);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
@@ -95,7 +98,7 @@ ul {
   /* background-image: linear-gradient(to right, rgb(253, 57, 237), rgb(131, 2, 37)); */
   width: calc(100% - 2rem);
   text-decoration: none;
-  color: #fff;
+  color: #777;
   
   position: relative;
   z-index: 10;
@@ -103,10 +106,12 @@ ul {
 
 .nav a:hover {
   background-image: linear-gradient(to right, rgb(253, 57, 237), rgb(131, 2, 37));
+  color: #fff;
 }
 
 .nav a.active {
   background-image: linear-gradient(to right, rgb(253, 57, 237), rgb(131, 2, 37));
+  color: #fff;
 }
 
 .log-out-btn {
