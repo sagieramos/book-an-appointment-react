@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
+import { BarLoader } from 'react-spinners';
 import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
 import car from '../assets/images/car.jpg';
@@ -97,7 +98,7 @@ const ItemDetails = () => {
   const today = new Date().toISOString().split('T')[0];
 
   if (!item) {
-    return <p>Loading...</p>;
+    return <div className="bar-spinner"><BarLoader color="#98bf11" /></div>;
   }
 
   return (

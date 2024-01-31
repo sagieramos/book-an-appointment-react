@@ -1,5 +1,10 @@
+:root {
+  --green: #98bf11;
+  --primary: #707070;
+  --header-main: 20rem;
+}
+
 .App {
-  text-align: center;
   min-height: 100vh;
   padding: 2rem 0;
 }
@@ -9,132 +14,143 @@
   padding: 0;
   list-style: none;
   text-decoration: none;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
+  font-size: 13px;
   box-sizing: border-box;
-  font-size: 62.5%;
 }
 
 body {
-  font-size: 1.6rem;
   scroll-behavior: smooth;
   position: relative;
 }
 
-li {
-  list-style: none;
-}
-
-ul {
-  margin: 0;
-}
-
-.app-color {
-  position: absolute;
-  z-index: -1;
-  filter: blur(120px);
-}
-
-.app-color-1 {
-  top: 0;
-  left: 8rem;
-  width: 100rem;
-  height: 20rem;
-  background-color: #ff359b;
-}
-
-.app-color-2 {
-  bottom: 0;
-  right: 1rem;
-  width: 100rem;
-  height: 20rem;
-  background-color: #fffd87;
-}
-
-.app-color-3 {
-  left: 5rem;
-  top: 15rem;
-  width: 60rem;
-  height: 60rem;
-  background-color: #00d2ff;
-}
-
-.App-header {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 16vw;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  display: flex;
-  gap: 4rem;
-  flex-direction: column;
-  align-items: center;
-  padding: 4rem 0;
-}
-
-.nav {
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  gap: 4px;
-  align-items: flex-end;
-  width: 100%;
-  flex: 1;
-  padding-left: 2rem;
-}
-
-.nav a {
-  padding: 1rem 0;
-  font-size: 1.6rem;
-  /* background-image: linear-gradient(to right, rgb(253, 57, 237), rgb(131, 2, 37)); */
-  width: calc(100% - 2rem);
-  text-decoration: none;
-  color: #fff;
-  
-  position: relative;
-  z-index: 10;
-}
-
-.nav a:hover {
-  background-image: linear-gradient(to right, rgb(253, 57, 237), rgb(131, 2, 37));
-}
-
-.nav a.active {
-  background-image: linear-gradient(to right, rgb(253, 57, 237), rgb(131, 2, 37));
-}
-
-.log-out-btn {
-  outline: none;
-  border: none;
-  padding: 1rem 0;
-  width: calc(100% - 2rem);
-  background-image: linear-gradient(to right, rgb(99, 168, 247), rgb(2, 49, 131));
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: white;
-}
-
-.img-container {
-  width: 10rem;
-  height: 10rem;
-}
-
 .img-container img {
-  width: 100px;
-  height: 100px;
-}
-
-.app-social {
-  display: flex;
-  gap: 1rem;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
 }
 
 .app-social * {
+  margin: 0 4px;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+nav a {
+  color: #777 !important;
+  width: 100%;
+  padding: .5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+
+}
+
+nav *:focus {
+  color: #fff !important;
+  background-color: var(--green);
+}
+
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffffda;
+}
+
+.log-out-btn {
+  position: absolute;
+  bottom: 2rem;
+  left: 1rem;
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
+  padding: 2px 12px;
+  margin-left: 4px;
+}
+
+.log-out-btn:hover {
+  background-color: var(--green);
+}
+
+.spinner span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+@media screen and (min-width: 1200px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  main {
+    margin-left: var(--header-main);
+    padding: 2rem 4rem;
+  }
+
+  .app-social {
+    position: absolute;
+    bottom: 4.5rem;
+    left: 1rem;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: var(--header-main);
+    height: 100vh;
+    padding: 1rem 1rem;
+    background: linear-gradient(to left, #fefefe, #ffffff);
+    transition: all 0.5s ease;
+    z-index: 2;
+    border-right: 1px solid #e4e4e4;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  header {
+    display: flex;
+    width: 100%;
+    padding: 1rem 1rem;
+    background: linear-gradient(to left, #fefefe, #ffffff);
+    transition: all 0.5s ease;
+    z-index: 2;
+    border-right: 1px solid #e4e4e4;
+  }
+
+  nav {
+    display: none;  
+    padding: 2rem 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .app-social {
+    display: none;
+  }
 }

@@ -1,0 +1,86 @@
+.login-container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-color: #98bf11;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.login-container h2 {
+    color: #98bf11;
+    text-align: center;
+}
+
+.login-container form {
+    margin-top: 20px;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.login-container input[type="text"]::placeholder,
+.login-container input[type="password"]::placeholder {
+    color: #ccc;
+}
+
+.login-container button[type="submit"] {
+    width: 100%;
+    background-color: #98bf11;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.login-container button[type="submit"]:hover {
+    background-color: #85a10e;
+}
+
+.login-container p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-container p button {
+    background: none;
+    border: none;
+    color: #98bf11;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-container p button:hover {
+    color: #85a10e;
+}
+
+.show-password {
+    position: relative;
+}
+
+.show-password div {
+    position: absolute;
+    top: 20%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transform: scale(1.3);
+}

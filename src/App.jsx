@@ -4,9 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   FaFacebook, FaTwitter, FaLinkedin, FaGithub,
 } from 'react-icons/fa';
+import { RotateLoader } from 'react-spinners';
 
 import {
-  Routes, Route, NavLink, useLocation,
+  Routes, Route, NavLink,
 } from 'react-router-dom';
 import Login from './components/Login';
 import { logoutUser, me } from './redux/slices/profileSlice';
@@ -16,12 +17,17 @@ import ItemForm from './components/ItemForm';
 import ItemDetails from './components/ItemDetails';
 import ReservationsList from './components/ReservationList';
 import ReservationDetails from './components/ReservationDetails';
-import myLogo from './assets/cars.jpg';
+import myLogo from './assets/images/logocar.png';
+
+
+
 
 const App = () => {
   const dispatch = useDispatch();
-  const { user, loading, error } = useSelector((state) => state.profile);
-  const { pathname } = useLocation();
+  const { profile, items, reservations } = useSelector((state) => state);
+  const { user, loading, error } = profile;
+
+  const stillLoading = items.loading || reservations.loading || loading;
 
   useEffect(() => {
     dispatch(me());
@@ -44,36 +50,37 @@ const App = () => {
     );
   }
 
-  const alreadyLogin = pathname === '/login' || user;
-  const alreadySignup = pathname === '/signup' || user;
   return (
     <div className="App">
-      <div className="app-container">
-        <div className="app-color app-color-1" />
-        <div className="app-color app-color-2" />
-        <div className="app-color app-color-3" />
-        <header className="App-header">
-          <div className="img-container">
-            <img src={myLogo} alt="brand-logo" />
-          </div>
-          <nav className="nav">
-            <NavLink to="/">Vehicles</NavLink>
-            {!alreadyLogin && <NavLink to="/login">Login</NavLink>}
-            {!alreadySignup && <NavLink to="/signup">Signup</NavLink>}
-            {user?.admin && <NavLink to="/items/new">Add New Car</NavLink>}
-            {user && <NavLink to={`/${user?.username}/reservations`}>My Reservations</NavLink>}
-            {user && <button type="button" onClick={handleLogout} className="log-out-btn">Logout</button>}
-          </nav>
+      {stillLoading
+      && <div className="spinner"><RotateLoader color="#98bf11" /></div>}
+      <header className="App-header">
+        <div className="img-container">
+          <img src={myLogo} alt="brand-logo" />
+        </div>
+        <nav className="nav">
+          <NavLink to="/">Vehicles</NavLink>
+          {!user
+            && (
+            <>
+              <NavLink to="/login">Login</NavLink>
+              <NavLink to="/signup">Signup</NavLink>
+            </>
+            )}
+          {user?.admin && <NavLink to="/items/new">Add New Car</NavLink>}
+          {user && <NavLink to={`/${user?.username}/reservations`}>Reservations</NavLink>}
+          {user && <button type="button" onClick={handleLogout} className="log-out-btn">Logout</button>}
+        </nav>
 
-          {loading && <div>Loading...</div>}
-          <div className="app-social">
-            <div><FaFacebook size={22} color="#3b5998" /></div>
-            <div><FaTwitter size={22} color="#1da1f2" /></div>
-            <div><FaLinkedin size={22} color="#0077b5" /></div>
-            <div><FaGithub size={22} color="#171515" /></div>
-          </div>
-        </header>
-
+        {loading && <div>Loading...</div>}
+        <div className="app-social">
+          <FaFacebook size={20} color="#3b5998" />
+          <FaTwitter size={20} color="#1da1f2" />
+          <FaLinkedin size={20} color="#0077b5" />
+          <FaGithub size={20} color="#171515" />
+        </div>
+      </header>
+      <main>
         <Routes>
           <Route path="/" element={<Vehicles />} />
           <Route path="/login" element={<Login />} />
@@ -81,14 +88,14 @@ const App = () => {
           {user?.username && <Route path="/items/new" element={<ItemForm />} />}
           <Route path="/item/:id" element={<ItemDetails />} />
           {user?.username && (
-          <>
-            <Route path="/:username/reservations" element={<ReservationsList />} />
-            <Route path="/:username/reservations/:id" element={<ReservationDetails />} />
-            <Route path="/:username/item/:id" element={<ItemDetails />} />
-          </>
+            <>
+              <Route path="/:username/reservations" element={<ReservationsList />} />
+              <Route path="/:username/reservations/:id" element={<ReservationDetails />} />
+              <Route path="/:username/item/:id" element={<ItemDetails />} />
+            </>
           ) }
         </Routes>
-      </div>
+      </main>
     </div>
   );
 };

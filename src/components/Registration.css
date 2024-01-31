@@ -1,0 +1,86 @@
+.registration-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.registration {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.registration h2 {
+    color: #98bf11;
+    text-align: center;
+}
+
+.registration form {
+    margin-top: 20px;
+}
+
+.registration input[type="text"],
+.registration input[type="password"],
+.registration input[type="email"],
+.registration select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.registration input[type="text"]::placeholder,
+.registration input[type="password"]::placeholder,
+.registration input[type="email"]::placeholder {
+    color: #ccc;
+}
+
+.registration select {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.registration button[type="submit"],
+.registration button[type="button"] {
+    width: 100%;
+    background-color: #98bf11;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.registration button[type="submit"]:hover,
+.registration button[type="button"]:hover {
+    background-color: #85a10e;
+}
+
+.registration p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.registration p button {
+    background: none;
+    border: none;
+    color: #98bf11;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.registration p button:hover {
+    color: #85a10e;
+}
+
+.al-q button {
+    background: none !important;
+    color: inherit !important;
+}

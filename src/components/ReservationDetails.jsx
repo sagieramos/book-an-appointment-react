@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { BarLoader } from 'react-spinners';
 import api from '../apiDomain.json';
 import car from '../assets/images/car.jpg';
 
@@ -39,7 +40,7 @@ const ReservationDetails = () => {
   }, [id, user]);
 
   if (!reservation) {
-    return <div>Loading...</div>;
+    return <div className="bar-spinner"><BarLoader color="#98bf11" /></div>;
   }
 
   return (
