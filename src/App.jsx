@@ -74,20 +74,22 @@ const App = () => {
           </div>
         </header>
 
-        <Routes>
-          <Route path="/" element={<Vehicles />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Registration />} />
-          {user?.username && <Route path="/items/new" element={<ItemForm />} />}
-          <Route path="/item/:id" element={<ItemDetails />} />
-          {user?.username && (
-          <>
-            <Route path="/:username/reservations" element={<ReservationsList />} />
-            <Route path="/:username/reservations/:id" element={<ReservationDetails />} />
-            <Route path="/:username/item/:id" element={<ItemDetails />} />
-          </>
-          ) }
-        </Routes>
+        <div className="App-content">
+          <Routes>
+            <Route path="/" element={<Vehicles />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Registration />} />
+            {user?.username && <Route path="/items/new" element={<ItemForm />} />}
+            <Route path="/item/:id" element={<ItemDetails />} />
+            {user?.username && (
+            <>
+              <Route path="/:username/reservations" element={<ReservationsList />} />
+              <Route path="/:username/reservations/:id" element={<ReservationDetails />} />
+              <Route path="/:username/item/:id" element={<ItemDetails />} />
+            </>
+            ) }
+          </Routes>
+        </div>
       </div>
     </div>
   );
