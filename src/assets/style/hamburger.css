@@ -1,0 +1,110 @@
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+    color: #333;
+  }
+
+  :root {
+    --c-black: #272a31;
+    --c-red: #ec5242;
+    --c-gray: #d3d3d3;
+    --floor-padding: 15px;
+    --floor-width-padding: 15px;
+    --bar-width: 24px;
+    --bar-height: 4px;
+    --hamburger-gap: 4px;
+    --foreground: #333;
+    --hamburger-margin: 24px;
+    --animation-timing: 200ms ease-in-out;
+    --c-gap: 20px;
+    --c-internal-gap: 10px;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .hamburger-menu {
+      --x-width: calc(var(--hamburger-height) * 1.41421356237);
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: var(--hamburger-gap);
+      width: max-content;
+      top: var(--hamburger-margin);
+      left: var(--hamburger-margin);
+      z-index: 1000;
+      cursor: pointer;
+    }
+    
+    .hamburger-menu:has(input:checked) {
+      --foreground: #ec5242;
+      --background: #333;
+    }
+    
+    .hamburger-menu::before,
+    .hamburger-menu::after,
+    .hamburger-menu input {
+      content: "";
+      width: var(--bar-width);
+      height: var(--bar-height);
+      background-color: var(--foreground);
+      border-radius: 0;
+      transform-origin: left center;
+      transition:
+        opacity var(--animation-timing),
+        width var(--animation-timing),
+        rotate var(--animation-timing),
+        translate var(--animation-timing),
+        background-color var(--animation-timing);
+    }
+    
+    .hamburger-menu:has(input:focus-visible)::before,
+    .hamburger-menu:has(input:focus-visible)::after,
+    .hamburger-menu input:focus-visible {
+      border: 1px solid var(--background);
+      box-shadow: 0 0 0 1px var(--foreground);
+    }
+    
+    .hamburger-menu:has(input:checked)::before {
+      rotate: 45deg;
+      width: var(--x-width);
+      translate: 0 calc(var(--bar-height) / -2);
+    }
+    
+    .hamburger-menu:has(input:checked)::after {
+      rotate: -45deg;
+      width: var(--x-width);
+      translate: 0 calc(var(--bar-height) / 2);
+    }
+    
+    .hamburger-menu input:checked {
+      opacity: 0;
+      width: 0;
+    }
+    
+    .sidebar {
+      transition: transform var(--animation-timing);
+      transform: translateX(-100%);
+      padding: 0.5rem 1rem;
+      padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+      background-color: #fff;
+      color: var(--background);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 200px;
+      height: 100%;
+      overflow-x: auto;
+      position: absolute;
+      z-index: 999;
+      left: -2px;
+      left: 0;
+    }
+    
+    .hamburger-menu:has(input:checked) + .sidebar {
+      transform: translateX(0);
+    }
+    
+  }
+
+  

@@ -4,9 +4,13 @@
   --header-main: 20rem;
 }
 
+body {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
 .App {
   min-height: 100vh;
-  padding: 2rem 0;
 }
 
 * {
@@ -24,133 +28,177 @@ html {
 
 body {
   scroll-behavior: smooth;
-  position: relative;
+  overflowX: hidden;
 }
 
-.img-container img {
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
-}
-
-.app-social * {
-  margin: 0 4px;
-}
-
-a {
-  text-decoration: none !important;
-}
-
-nav a {
-  color: #777 !important;
-  width: 100%;
-  padding: .5rem;
-  font-size: 1rem;
-  transition: all 0.2s ease;
-
-}
-
-nav *:focus {
-  color: #fff !important;
-  background-color: var(--green);
-}
-
-.spinner {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 99;
+main dev {
   width: 100vw;
-  height: 100vh;
-  background-color: #ffffffda;
 }
 
-.log-out-btn {
-  position: absolute;
-  bottom: 2rem;
-  left: 1rem;
-  background-color: transparent;
-  border: none;
-  color: #333;
-  font-size: 1rem;
+.p-title {
+  margin-bottom: 44px;
+  text-align: center;
   font-weight: 600;
-  cursor: pointer;
-  padding: 2px 12px;
-  margin-left: 4px;
+  width: 100%;
 }
 
-.log-out-btn:hover {
-  background-color: var(--green);
+.p-title h2 {
+  font-size: 1.5rem;
+  color: #777;
 }
 
-.spinner span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.p-title h3 {
+  font-size: 1rem;
+  color: #a39c9c;
 }
 
-
-
-@media screen and (min-width: 1200px) {
-  nav {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 0;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 1rem;
+@media screen and (min-width: 768px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   main {
-    margin-left: var(--header-main);
-    padding: 2rem 4rem;
+    padding-left: 250px;
   }
 
-  .app-social {
-    position: absolute;
-    bottom: 4.5rem;
-    left: 1rem;
+  main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  main div {
+  }
+}
+
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
+  
+}
+
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 14px;
   }
 
   header {
     position: fixed;
     top: 0;
     left: 0;
-    display: flex;
-    flex-direction: column;
-    width: var(--header-main);
+    width: 300px;
     height: 100vh;
-    padding: 1rem 1rem;
-    background: linear-gradient(to left, #fefefe, #ffffff);
-    transition: all 0.5s ease;
-    z-index: 2;
-    border-right: 1px solid #e4e4e4;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  main {
+    padding-left: 300px;
+  }
+
+  .p-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #98bf11;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: center;
   }
 }
 
-@media screen and (max-width: 1200px) {
-  header {
+
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 10px;
+  }
+
+ main {
+    padding-left: 0;
+    padding-top: 60px;
+    height: 100vh;
     display: flex;
-    width: 100%;
-    padding: 1rem 1rem;
-    background: linear-gradient(to left, #fefefe, #ffffff);
-    transition: all 0.5s ease;
-    z-index: 2;
-    border-right: 1px solid #e4e4e4;
+    flex-direction: column;
+    align-items: center;
+    align-items: center;
   }
+}
 
-  nav {
-    display: none;  
-    padding: 2rem 0;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 1rem;
-    width: 100%;
-  }
+.sidebar {
+  color: #777;
+  padding: 20px;
+  height: 80vmax;
+}
 
-  .app-social {
-    display: none;
-  }
+.drop-menu {
+  margin-top: 10px;
+}
+
+.menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-list {
+  margin-bottom: 10px;
+}
+
+.menu-list a {
+  text-decoration: none;
+  color: #777;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.menu-list a:hover {
+  color: #ccc;
+  background-color: #85a10e;
+}
+
+.menu-list a:active {
+  font-weight: bold;
+  color: #fff;
+  background-color: #85a10e;
+}
+
+.log-out-btn {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: #777;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.log-out-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.campaign {
+  display: block;
+  margin-top: 20px;
+}
+
+.campaign a {
+  text-decoration: none;
+  color: #333;
+}
+
+.campaign a:hover {
+  text-decoration: underline;
+}
+
+.card-item img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
 }

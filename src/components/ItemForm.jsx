@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import nigeriaCities from '../nigeriaCities.json';
+import './itemform.css'
 import api from '../apiDomain.json';
 
 const ItemForm = () => {
@@ -75,9 +76,9 @@ const ItemForm = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h2>Create Item</h2>
+    <div className="item-form-wrapper">
+      <div className="item-form">
+        <h2>Add</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="item-name">
@@ -88,7 +89,12 @@ const ItemForm = () => {
           <div>
             <label htmlFor="item-desc">
               <span>Description:</span>
-              <input id="item-desc" type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+              <textarea tex id="item-desc" 
+                type="text" value={description} 
+                onChange={(e) => setDescription(e.target.value)}
+                rows={4} 
+                cols={50}
+              />
             </label>
           </div>
           <div>

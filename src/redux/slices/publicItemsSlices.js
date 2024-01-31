@@ -42,6 +42,9 @@ const publicItemsSlice = createSlice({
   initialState,
   reducers: {
     resetItems: () => initialState,
+    deleteItemById: (state, action) => {
+      state.items = state.items.filter(item => item.id !== action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -69,6 +72,6 @@ const publicItemsSlice = createSlice({
   },
 });
 
-export const { resetItems } = publicItemsSlice.actions;
+export const { resetItems, deleteItemById } = publicItemsSlice.actions;
 
 export default publicItemsSlice.reducer;

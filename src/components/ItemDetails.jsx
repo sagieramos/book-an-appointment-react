@@ -114,50 +114,46 @@ const ItemDetails = () => {
       <img
         src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
         alt={item.name}
-        style={{ width: '100px', height: '100px' }}
       />
-      <p>
-        Name:
-        {item.name}
-      </p>
-      <div>
-        <p>
-          City:
-          {item.city}
-        </p>
-        <p>
-          Finance Fee:
-          {item.finance_fee}
-        </p>
-        <p>
-          Option to Purchase Fee:
-          {item.option_to_purchase_fee}
-        </p>
-        <p>
-          Total Amount Payable:
-          {item.total_amount_payable}
-        </p>
-        <p>
-          Duration:
-          {item.duration}
-        </p>
-        <p>
-          APR Representative:
-          {item.apr_representative}
-        </p>
+      <div className="table-fee">
+        <div>
+          <span>Name:</span>
+          <span>{item.name}</span>
+        </div>
+        <div>
+          <span>City:</span>
+          <span>{item.city}</span>
+        </div>
+        <div>
+          <span>Finance Fee:</span>
+          <span>{item.finance_fee}</span>
+        </div>
+        <div>
+          <span>Option to Purchase Fee:</span>
+          <span>{item.option_to_purchase_fee}</span>
+        </div>
+        <div>
+          <span>Total Amount Payable:</span>
+          <span>{item.total_amount_payable}</span>
+        </div>
+        <div>
+          <span>Duration:</span>
+          <span>{item.duration}</span>
+        </div>
+        <div>
+          <span>APR Representative:</span>
+          <span>{item.apr_representative}</span>
+        </div>
+        <div>
+          <span>You Reserved: {item.you_reserve}</span>
+        </div>
+        {user?.admin && (
+          <div>
+            <span>Total Reservations: {item.reservation_count}</span>
+          </div>
+        )}
       </div>
-      <p>{item.description}</p>
-      <span>{item.created_at}</span>
-      <p>
-        You Reserve:
-        {item.you_reserve}
-      </p>
-      {user?.admin && (
-      <p>
-        Reservation Count:
-        {item.reservation_count}
-      </p>
-      )}
+
       <form onSubmit={handleReserve}>
         <input
           type="date"
