@@ -1,10 +1,19 @@
 .App {
   text-align: center;
   min-height: 100vh;
+  overflow: hidden;
 }
 
-.App:not(:first-child) {
-  padding-top: -100vh;
+.app-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.App-content {
+  margin-left: 16vw;
+  overflow-x: hidden;
 }
 
 * {
@@ -60,12 +69,12 @@ ul {
   left: 5rem;
   top: 15rem;
   width: 60rem;
-  height: 60rem;
+  height: 40rem;
   background-color: #00d2ff;
 }
 
 .App-header {
-  position: sticky;
+  position: fixed;
   left: 0;
   top: 0;
   width: 16vw;
