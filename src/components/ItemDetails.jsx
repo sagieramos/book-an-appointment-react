@@ -7,6 +7,7 @@ import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
 import car from '../assets/images/car.jpg';
 import backbtn from '../assets/images/backbtn.svg';
+import './itemDetails.css';
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -102,78 +103,60 @@ const ItemDetails = () => {
   }
 
   return (
-    <div>
-      <div>
+    <div className="container">
+      <div className="btn">
         {!isMatchingUrl() && (
           <button type="button" onClick={() => navigate(-1)}>
             <img src={backbtn} alt="back" />
           </button>
         )}
       </div>
-      <h2>Item Details</h2>
-      <img
+      <img className="item-image"
         src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
         alt={item.name}
       />
       <div className="table-fee">
         <div>
-          <span>Name:</span>
-          <span>{item.name}</span>
-        </div>
-        <div>
-          <span>City:</span>
-          <span>{item.city}</span>
-        </div>
-        <div>
-          <span>Finance Fee:</span>
-          <span>{item.finance_fee}</span>
-        </div>
-        <div>
-          <span>Option to Purchase Fee:</span>
-          <span>{item.option_to_purchase_fee}</span>
-        </div>
-        <div>
-          <span>Total Amount Payable:</span>
-          <span>{item.total_amount_payable}</span>
-        </div>
-        <div>
-          <span>Duration:</span>
-          <span>{item.duration}</span>
-        </div>
-        <div>
-          <span>APR Representative:</span>
-          <span>{item.apr_representative}</span>
-        </div>
-        <div>
+          <h3>{item.name}</h3>
           <span>You Reserved: {item.you_reserve}</span>
-        </div>
-        {user?.admin && (
-          <div>
+          {user?.admin && (
             <span>Total Reservations: {item.reservation_count}</span>
+          )}
+        </div>
+          <div className="main-table">
+            <div>
+              <span>Finance Fee:</span>
+              <span>{item.finance_fee}</span>
+            </div>
+            <div>
+              <span>Option to Purchase Fee:</span>
+              <span>{item.option_to_purchase_fee}</span>
+            </div>
+            <div>
+              <span>Total Amount Payable:</span>
+              <span>{item.total_amount_payable}</span>
+            </div>
+            <div>
+              <span>Duration:</span>
+              <span>{item.duration}</span>
+            </div>
+            <div>
+              <span>APR Representative:</span>
+              <span>{item.apr_representative}</span>
+            </div>
+            <div>
+              <span>You Reserved: {item.you_reserve}</span>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
 
-      <form onSubmit={handleReserve}>
-        <input
-          type="date"
-          value={reserveDate}
-          min={today}
-          onChange={(e) => setReserveDate(e.target.value)}
-        />
-        {validationMessage && <p style={{ color: 'red' }}>{validationMessage}</p>}
-        <button type="submit">Reserve</button>
-      </form>
-      {user?.admin && (
-        <button type="button" onClick={handleDelete}>
-          Delete
+      {user && (
+        <button type="button" onClick={() => navigate(`/${user.username}/item/${item.id}/reservation/new`)}>
+          Reserve
         </button>
       )}
-      {isMatchingUrl() && user?.admin && (
-      <button type="button" onClick={() => navigate(`/${user.username}/item/new`)}>
-        Add new
-      </button>
-      )}
+
+
     </div>
   );
 };

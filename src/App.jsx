@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
+import ReservePage from './components/ReservePage';
 import { RotateLoader } from 'react-spinners';
 
 import {
@@ -60,6 +61,7 @@ const App = () => {
               <Route path="/:username/reservations/:id" element={<ReservationDetails />} />
               <Route path="/:username/item/:id" element={<ItemDetails />} />
               <Route path="/p/items/delete" element={<Vehicles />} />
+              <Route path="/:username/item/:id/reservation/new" element={<ReservePage />} />
             </>
           ) }
         </Routes>

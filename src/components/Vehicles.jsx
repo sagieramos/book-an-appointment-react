@@ -119,7 +119,7 @@ const Vehicles = () => {
         <h2>Explore Wonders</h2>
         <h3>Please reserve a ride</h3>
       </div>
-      <Carousel breakPoints={breakPoints} focusOnSelect initialActiveIndex={2}>
+      <Carousel breakPoints={breakPoints} focusOnSelect initialActiveIndex={1}>
         {allItems}
       </Carousel>
       <button type="button" disabled={page === 1} onClick={handlePreviousPage}>
