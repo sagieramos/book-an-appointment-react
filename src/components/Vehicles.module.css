@@ -17,13 +17,6 @@
   font-weight: bold;
 }
 
-.vehicle-slider {
-  padding: 1rem 5rem;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, 1fr);
-}
-
 .vehicle-card {
   background-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(5px);
@@ -35,7 +28,7 @@
 
 .vehicle-card .img {
   height: 200px;
-  width: 100%;
+  width: 285px;
   overflow: hidden;
 }
 

@@ -4,16 +4,12 @@
     align-items: center;
     height: 100vh;
     margin-top: 20px;
-    position: absolute;
-    left: 20%;
-    top: 0;
-    overflow-y: scroll;
-    scrollbar-width: none;
 }
 
 .reservations-container {
-    display: flex;
-    flex-wrap: wrap;
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     width: 80%;
     
@@ -69,11 +65,12 @@ a {
 }
 
 .pagination {
+   position: fixed;
+   left: 50%;
+   bottom: 24px;
+    transform: translateX(-50%);
     display: flex;
     gap: 10px;
-    margin-top: 20px;
-    align-items: center;
-    font-size: 1.5rem;
 }
 
 .pagination button {

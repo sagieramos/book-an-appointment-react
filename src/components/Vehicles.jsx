@@ -14,7 +14,7 @@ const Vehicles = () => {
   const perPage = 120;
 
   useEffect(() => {
-    dispatch(fetchItems({ query: '', per_page: perPage }));
+    dispatch(fetchItems({ query: '', perPage }));
   }, [dispatch, perPage]);
 
   const renderItems = () => items.map((n) => (
