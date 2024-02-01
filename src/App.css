@@ -8,7 +8,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-
 }
 
 .App-content {
@@ -104,11 +103,11 @@ ul {
 .nav a {
   padding: 1rem 0;
   font-size: 1.6rem;
+
   /* background-image: linear-gradient(to right, rgb(253, 57, 237), rgb(131, 2, 37)); */
   width: calc(100% - 2rem);
   text-decoration: none;
   color: #777;
-  
   position: relative;
   z-index: 10;
 }

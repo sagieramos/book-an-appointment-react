@@ -1,65 +1,65 @@
 .resDetailsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 50%;
-    position: absolute;
-    top: 0;
-    left: 30%;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-    overflow-y: scroll;
-    scrollbar-width: none;
-    font-size: 1.7rem;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 50%;
+  position: absolute;
+  top: 0;
+  left: 30%;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  font-size: 1.7rem;
+  margin-top: 20px;
 }
 
 .resDetailsContainer img {
-    transition: transform 0.5s ease;
-    margin: 10px 0;
+  transition: transform 0.5s ease;
+  margin: 10px 0;
 }
 
 .resDetailsContainer img:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .resDetailsContainer p {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .about-btn {
-    padding: 10px;
-        background-color: #F435DE;
-        cursor: pointer;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        width: 250px;
-        align-self: center;
+  padding: 10px;
+  background-color: #f435de;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  width: 250px;
+  align-self: center;
 }
 
 .back-btn {
-    padding: 10px;
-    background-color: #F435DE;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    width: 250px;
-    align-self: center;
-    margin-left: 17px;
+  padding: 10px;
+  background-color: #f435de;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  width: 250px;
+  align-self: center;
+  margin-left: 17px;
 }
 
 button:hover {
-    background-color: #8E0737;
-    opacity: 0.8;
+  background-color: #8e0737;
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {
-    .resDetailsContainer {
-        width: 100%;
-        height: auto;
-        padding: 20px 0;
-    }
+  .resDetailsContainer {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+  }
 }
