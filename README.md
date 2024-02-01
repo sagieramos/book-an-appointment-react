@@ -6,8 +6,8 @@ The Car Rental APP is a web application that display a list of cars. It allows y
 
 <!-- TABLE OF CONTENTS -->
 ## <b>Table of Contents 📗
-- [**DRIVE EASY APP** ](#drive-easy-app-)
-  - [The DRIVE EASY APP is a web application that display a list of cars. It allows you to add a car, to delete a car and to reserve a car.](#the-Car-Rental-app-is-a-web-application-that-display-a-list-of-cars-it-allows-you-to-add-a-car-to-delete-a-car-and-to-reserve-a-car)
+- [**Car Rental App** ](#Car-Rental-App-)
+  - [The Car Rental APP is a web application that display a list of cars. It allows you to add a car, to delete a car and to reserve a car.](#the-Car-Rental-app-is-a-web-application-that-display-a-list-of-cars-it-allows-you-to-add-a-car-to-delete-a-car-and-to-reserve-a-car)
   - [Table of Contents 📗](#table-of-contents-)
   - [**Built With 🛠**](#built-with-)
     - [**Key Features 🏷️** ](#key-features-️-)
