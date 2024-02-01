@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { fetchReservations } from '../Redux/slices/reservationSlice';
+import { fetchReservations } from '../redux/slices/reservationSlice';
 import api from '../apiDomain.json';
 // import car from '../assets/car1.jpeg';
 import style from './ReservationList.module.css';
@@ -126,7 +126,7 @@ const ReservationsList = () => {
               {reservation.item_list.map((item) => (
                 <li key={item.id}>
                   <img
-                    src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
+                    src={item.image_url ? `${api.apiDomain}/${item.image_url}` : ''}
                     alt={item.name}
                     style={{ width: '200px', height: '200px' }}
                   />

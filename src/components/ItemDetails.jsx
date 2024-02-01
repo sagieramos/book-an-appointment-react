@@ -6,6 +6,7 @@ import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
 import car from '../assets/images/car.jpg';
 import backbtn from '../assets/images/backbtn.svg';
+import style from './Vehicles.module.css';
 
 const ItemDetails = () => {
   const { id } = useParams();
@@ -101,82 +102,111 @@ const ItemDetails = () => {
   }
 
   return (
-    <div>
-      <div>
+    <div className={style['section-item-details']}>
+      <div className={style['back-btn']}>
         {!isMatchingUrl() && (
           <button type="button" onClick={() => navigate(-1)}>
             <img src={backbtn} alt="back" />
           </button>
         )}
       </div>
-      <h2>Item Details</h2>
-      <img
-        src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
-        alt={item.name}
-        style={{ width: '100px', height: '100px' }}
-      />
-      <p>
-        Name:
-        {item.name}
-      </p>
-      <div>
-        <p>
-          City:
-          {item.city}
-        </p>
-        <p>
-          Finance Fee:
-          {item.finance_fee}
-        </p>
-        <p>
-          Option to Purchase Fee:
-          {item.option_to_purchase_fee}
-        </p>
-        <p>
-          Total Amount Payable:
-          {item.total_amount_payable}
-        </p>
-        <p>
-          Duration:
-          {item.duration}
-        </p>
-        <p>
-          APR Representative:
-          {item.apr_representative}
-        </p>
-      </div>
-      <p>{item.description}</p>
-      <span>{item.created_at}</span>
-      <p>
-        You Reserve:
-        {item.you_reserve}
-      </p>
-      {user?.admin && (
-      <p>
-        Reservation Count:
-        {item.reservation_count}
-      </p>
-      )}
-      <form onSubmit={handleReserve}>
-        <input
-          type="date"
-          value={reserveDate}
-          min={today}
-          onChange={(e) => setReserveDate(e.target.value)}
+      <div className={style['details-img']}>
+        <img
+          src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
+          alt={item.name}
         />
-        {validationMessage && <p style={{ color: 'red' }}>{validationMessage}</p>}
-        <button type="submit">Reserve</button>
-      </form>
-      {user?.admin && (
-        <button type="button" onClick={handleDelete}>
-          Delete
+      </div>
+      <div className={style['details-des']}>
+        <p className={style['details-name']}>
+          {item.name}
+        </p>
+        <div className={style['details-info']}>
+          <p className={style['dark-bg']}>
+            <span>
+              City:
+            </span>
+            <span>
+              {item.city}
+            </span>
+          </p>
+          <p>
+            <span>
+              Finance Fee:
+            </span>
+            <span>
+              {item.finance_fee}
+            </span>
+          </p>
+          <p className={style['dark-bg']}>
+            <span>
+              Purchase Fee:
+            </span>
+            <span>
+              {item.option_to_purchase_fee}
+            </span>
+          </p>
+          <p>
+            <span>
+              Total Payable:
+            </span>
+            <span>
+              {item.total_amount_payable}
+            </span>
+          </p>
+          <p className={style['dark-bg']}>
+            <span>
+              Duration:
+            </span>
+            <span>
+              {item.duration}
+            </span>
+          </p>
+          <p>
+            <span>
+              APR Representative:
+            </span>
+            <span>
+              {item.apr_representative}
+            </span>
+          </p>
+        </div>
+        <p className={style['prev-reserve']}>
+          You Reserve This Car
+          {' '}
+          <span>
+            {item.you_reserve}
+          </span>
+          {' '}
+          Time
+        </p>
+        {user?.admin && (
+        <p>
+          Your total reservation
+          {' '}
+            {item.reservation_count}
+        </p>
+        )}
+        <form onSubmit={handleReserve} className={style['date-form']}>
+          <input
+            type="date"
+            value={reserveDate}
+            min={today}
+            onChange={(e) => setReserveDate(e.target.value)}
+          />
+          {validationMessage && <p style={{ color: 'red' }}>{validationMessage}</p>}
+          <button type="submit">Reserve</button>
+        </form>
+        {user?.admin && (
+          <button className={style['cancel-reservation']} type="button" onClick={handleDelete}>
+            Cancel Reservation
+          </button>
+        )}
+        {isMatchingUrl() && user?.admin && (
+        <button className={style['add-new']} type="button" onClick={() => navigate(`/${user.username}/item/new`)}>
+          Add new
         </button>
-      )}
-      {isMatchingUrl() && user?.admin && (
-      <button type="button" onClick={() => navigate(`/${user.username}/item/new`)}>
-        Add new
-      </button>
-      )}
+        )}
+      </div>
     </div>
   );
 };
