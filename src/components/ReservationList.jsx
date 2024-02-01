@@ -4,67 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { fetchReservations } from '../redux/slices/reservationSlice';
 import api from '../apiDomain.json';
-// import car from '../assets/car1.jpeg';
 import style from './ReservationList.module.css';
 
 const ReservationsList = () => {
-  // Mock data for styling
-
-  // const myReservations = [
-  //   {
-  //     customer_id: 1,
-  //     reserve_for_use_date: '2021-09-01',
-  //     item_list: [
-  //       {
-  //         id: 1,
-  //         name: 'car',
-  //         description: 'car',
-  //         image_url: 'car',
-  //         show_reservation: 'show_reservation',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     customer_id: 1,
-  //     reserve_for_use_date: '2021-09-01',
-  //     item_list: [
-  //       {
-  //         id: 1,
-  //         name: 'car',
-  //         description: 'car',
-  //         image_url: 'car.jpg',
-  //         show_reservation: 'show_reservation',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     customer_id: 1,
-  //     reserve_for_use_date: '2021-09-01',
-  //     item_list: [
-  //       {
-  //         id: 1,
-  //         name: 'car',
-  //         description: 'car',
-  //         image_url: 'car.jpg',
-  //         show_reservation: 'show_reservation',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     customer_id: 1,
-  //     reserve_for_use_date: '2021-09-01',
-  //     item_list: [
-  //       {
-  //         id: 1,
-  //         name: 'car',
-  //         description: 'car',
-  //         image_url: 'car.jpg',
-  //         show_reservation: 'show_reservation',
-  //       },
-  //     ],
-  //   },
-  // ];
-
   const { reservations } = useSelector((state) => state.reservations);
   const { user } = useSelector((state) => state.profile);
   const { totalPages } = useSelector((state) => state.reservations);
