@@ -5,6 +5,7 @@ import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
 import car from '../assets/images/car.jpg';
 import style from './Vehicles.module.css';
+import Carousel from 'react-elastic-carousel';
 
 const Vehicles = () => {
   const dispatch = useDispatch();
@@ -47,10 +48,21 @@ const Vehicles = () => {
     </li>
   ));
 
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+  ];
+
   return (
     <div className={style['section-vehicles']}>
       <h2 className={style['vehicle-heading']}>Cars Models</h2>
-      <ul className={style['vehicle-slider']}>{renderItems()}</ul>
+      <ul className={style['vehicle-slider']}>
+      <Carousel breakPoints={breakPoints} focusOnSelect initialActiveIndex={1}>
+        {renderItems()}
+        </Carousel>
+        </ul>
     </div>
   );
 };
