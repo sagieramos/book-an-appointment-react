@@ -122,12 +122,6 @@ const Vehicles = () => {
       <Carousel breakPoints={breakPoints} focusOnSelect initialActiveIndex={1}>
         {allItems}
       </Carousel>
-      <button type="button" disabled={page === 1} onClick={handlePreviousPage}>
-        Previous Page
-      </button>
-      <button type="button" disabled={page === totalPages} onClick={handleNextPage}>
-        Next Page
-      </button>
     </>
   );
 };

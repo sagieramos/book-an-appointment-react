@@ -1,0 +1,81 @@
+  
+  .reservation-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .reservation-item p {
+    margin: 0;
+  }
+  
+  .item-table-reserved {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .item-table-reserved th,
+  .item-table-reserved td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  .item-table-reserved th {
+    background-color: #f2f2f2;
+  }
+  
+  .item-table-reserved tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .item-table-reserved tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .reservation-buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .more-details {
+    padding: 8px 16px;
+    background-color: #98bf11;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .more-details {
+    background-color: #98bf11;
+  }
+
+  .delete-reservation {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+  }
+
+  .reservation-list {
+    font-family: Arial, sans-serif;
+    max-width: 100%;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .reservation-list table::after {
+    content: "";
+    display: block;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+    width: 50px;
+    align-self: center;
+  }
+  

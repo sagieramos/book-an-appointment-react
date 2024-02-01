@@ -28,7 +28,7 @@ html {
 
 body {
   scroll-behavior: smooth;
-  overflowX: hidden;
+  overflow-x: hidden;
 }
 
 main dev {
@@ -123,7 +123,7 @@ main dev {
 
  main {
     padding-left: 0;
-    padding-top: 60px;
+    margin-top: 60px;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -201,4 +201,18 @@ main dev {
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.reserve-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1002;
+  background-color: #98bf11;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }

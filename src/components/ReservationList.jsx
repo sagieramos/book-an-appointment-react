@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { fetchReservations } from '../redux/slices/reservationSlice';
+import { AiOutlineDelete } from "react-icons/ai";
 import api from '../apiDomain.json';
-import car from '../assets/images/car.jpg';
+import './ReservationList.css';
 
 const ReservationsList = () => {
+  
   const { reservations } = useSelector((state) => state.reservations);
   const { user } = useSelector((state) => state.profile);
   const { totalPages } = useSelector((state) => state.reservations);
@@ -55,7 +57,7 @@ const ReservationsList = () => {
   }
 
   return (
-    <div>
+    <div className="reservation-list">
       {reservations.map((reservation) => (
         <div key={reservation.id}>
           <p>
@@ -63,31 +65,27 @@ const ReservationsList = () => {
             {' '}
             {reservation.reserve_for_use_date}
           </p>
-          <ul>
-            {reservation.item_list.map((item) => (
-              <li key={item.id}>
-                <img
-                  src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
-                  alt={item.name}
-                  style={{ width: '100px', height: '100px' }}
-                />
-                <p>
-                  Name:
-                  {' '}
-                  {item.name}
-                </p>
-                <p>
-                  Description:
-                  {' '}
-                  {item.description}
-                </p>
-                {item.show_reservation && (
-                  <a href={item.show_reservation}>Show Reservation</a>
-                )}
-              </li>
-            ))}
-          </ul>
+
+          {reservation.item_list.length > 0 && (
+            <>
+          <table className="item-table-reserved">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Finance Fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              {reservation.item_list.map((item) => (
+                <tr key={item.id}>
+                  <td>{item?.name}</td>
+                  <td>{item?.finance_fee}</td>
+                </tr>
+              ))}
+            </tbody>
+            <div class="reservation-buttons">
           <button
+            className="more-details"
             type="button"
             onClick={() => navigate(`/${user.username}/reservations/${reservation.id}`)}
           >
@@ -95,8 +93,10 @@ const ReservationsList = () => {
             More Details
             {' '}
           </button>
-          <hr />
-          <button type="button" onClick={() => handleDelete(reservation.id)}>Delete</button>
+          <button className="delete-reservation" type="button" onClick={() => handleDelete(reservation.id)}><AiOutlineDelete /></button>
+        </div>
+            </table>
+            </>)}
         </div>
       ))}
       <p>

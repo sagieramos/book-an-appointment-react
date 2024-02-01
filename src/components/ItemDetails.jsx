@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { SlArrowLeft } from "react-icons/sl";
 import axios from 'axios';
 import { BarLoader } from 'react-spinners';
 import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
 import car from '../assets/images/car.jpg';
 import backbtn from '../assets/images/backbtn.svg';
+
 import './itemDetails.css';
 
 const ItemDetails = () => {
@@ -104,13 +106,11 @@ const ItemDetails = () => {
 
   return (
     <div className="container">
-      <div className="btn">
-        {!isMatchingUrl() && (
-          <button type="button" onClick={() => navigate(-1)}>
-            <img src={backbtn} alt="back" />
-          </button>
-        )}
-      </div>
+      {!isMatchingUrl() && (
+      <button type="button" className="bk-btn" onClick={() => navigate(-1)}>
+        <SlArrowLeft />
+      </button>
+      )}
       <img className="item-image"
         src={item.image_url ? `${api.apiDomain}/${item.image_url}` : car}
         alt={item.name}
@@ -151,7 +151,7 @@ const ItemDetails = () => {
         </div>
 
       {user && (
-        <button type="button" onClick={() => navigate(`/${user.username}/item/${item.id}/reservation/new`)}>
+        <button className="reserve-btn" type="button" onClick={() => navigate(`/${user.username}/item/${item.id}/reservation/new`)}>
           Reserve
         </button>
       )}

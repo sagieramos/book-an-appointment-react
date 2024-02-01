@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   FaFacebook, FaTwitter, FaLinkedin, FaGithub,
@@ -11,10 +11,12 @@ const NavigationHeader = () => {
   const { user } = useSelector((state) => state.profile);
   const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       dispatch(logoutUser());
+      navigate('/');
     } catch (error) {
       throw new Error(error.response?.data?.status?.message || 'Logout failed');
     }
