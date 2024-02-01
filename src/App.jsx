@@ -6,7 +6,7 @@ import {
 } from 'react-icons/fa';
 
 import {
-  Routes, Route, NavLink, useLocation,
+  Routes, Route, NavLink, useLocation, useNavigate,
 } from 'react-router-dom';
 import Login from './components/Login';
 import { logoutUser, me } from './redux/slices/profileSlice';
@@ -21,6 +21,7 @@ import myLogo from './assets/cars.jpg';
 
 const App = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user, loading, error } = useSelector((state) => state.profile);
   const { pathname } = useLocation();
 
@@ -31,6 +32,7 @@ const App = () => {
   const handleLogout = async () => {
     try {
       dispatch(logoutUser());
+      navigate('/');
     } catch (error) {
       throw new Error(error.response?.data?.status?.message || 'Logout failed');
     }
