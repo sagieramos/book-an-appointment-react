@@ -16,6 +16,7 @@ import ItemForm from './components/ItemForm';
 import ItemDetails from './components/ItemDetails';
 import ReservationsList from './components/ReservationList';
 import ReservationDetails from './components/ReservationDetails';
+import Unauthorized from './components/Unauthorized';
 import myLogo from './assets/cars.jpg';
 
 const App = () => {
@@ -86,6 +87,7 @@ const App = () => {
               <Route path="/:username/reservations" element={<ReservationsList />} />
               <Route path="/:username/reservations/:id" element={<ReservationDetails />} />
               <Route path="/:username/item/:id" element={<ItemDetails />} />
+              <Route path="*" element={<Unauthorized />} />
             </>
             ) }
           </Routes>
