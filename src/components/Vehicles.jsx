@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Carousel from 'react-elastic-carousel';
 import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
 import car from '../assets/images/car.jpg';
 import style from './Vehicles.module.css';
-import Carousel from 'react-elastic-carousel';
 
 const Vehicles = () => {
   const dispatch = useDispatch();
@@ -59,10 +59,10 @@ const Vehicles = () => {
     <div className={style['section-vehicles']}>
       <h2 className={style['vehicle-heading']}>Cars Models</h2>
       <ul className={style['vehicle-slider']}>
-      <Carousel breakPoints={breakPoints} focusOnSelect initialActiveIndex={1}>
-        {renderItems()}
+        <Carousel breakPoints={breakPoints} focusOnSelect initialActiveIndex={1}>
+          {renderItems()}
         </Carousel>
-        </ul>
+      </ul>
     </div>
   );
 };
