@@ -12,7 +12,6 @@
   overflow-y: scroll;
   scrollbar-width: none;
   font-size: 1.7rem;
-  margin-top: 20px;
 }
 
 .resDetailsContainer img {
@@ -22,10 +21,6 @@
 
 .resDetailsContainer img:hover {
   transform: scale(1.1);
-}
-
-.resDetailsContainer p {
-  text-transform: capitalize;
 }
 
 .about-btn {

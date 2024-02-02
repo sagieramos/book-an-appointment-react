@@ -4,10 +4,11 @@
   align-items: center;
   height: 100vh;
   margin-top: 20px;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .reservations-container {
-  border: 1px solid red;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
@@ -61,27 +62,4 @@ button {
 a {
   text-decoration: none;
   color: black;
-}
-
-.pagination {
-  position: fixed;
-  left: 50%;
-  bottom: 24px;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.pagination button {
-  padding: 10px;
-  background-color: #f435de;
-  color: #fff;
-  cursor: pointer;
-  border: none;
-  border-radius: 10px;
-}
-
-.pagination button:hover {
-  background-color: #8e0737;
-  color: white;
 }
