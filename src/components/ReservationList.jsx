@@ -9,22 +9,8 @@ import style from './ReservationList.module.css';
 const ReservationsList = () => {
   const { reservations } = useSelector((state) => state.reservations);
   const { user } = useSelector((state) => state.profile);
-  const { totalPages } = useSelector((state) => state.reservations);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState(1);
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
 
   const handleDelete = async (id) => {
     try {
@@ -100,16 +86,6 @@ const ReservationsList = () => {
             <button className={[style['delete-button'], style.button].join(' ')} type="button" onClick={() => handleDelete(reservation.id)}>Delete</button>
           </div>
         ))}
-      </div>
-
-      <div className={style.pagination}>
-        <p>
-          {currentPage}
-          /
-          {totalPages}
-        </p>
-        <button type="button" onClick={handlePreviousPage}>Previous Page</button>
-        <button type="button" onClick={handleNextPage}>Next Page</button>
       </div>
     </div>
   );
