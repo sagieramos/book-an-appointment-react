@@ -13,23 +13,6 @@ const ReservationDetails = () => {
   const { user } = useSelector((state) => state.profile);
   const navigate = useNavigate();
 
-  // I could not get data from api so I used mock data for styling
-
-  // const reservation = {
-  //   customer_id: 1,
-  //   reserve_for_use_date: '2021-09-01',
-  //   created_at: '2021-09-01',
-  // };
-  // const items = [
-  //   {
-  //     id: 1,
-  //     name: 'car',
-  //     description: 'car',
-  //     image_url: 'car.jpg',
-  //     show_reservation: 'show_reservation',
-  //   },
-  // ];
-
   useEffect(() => {
     const fetchReservationData = async () => {
       try {
