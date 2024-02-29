@@ -8,7 +8,7 @@ import { fetchItems } from '../redux/slices/publicItemsSlices';
 import api from '../apiDomain.json';
 import car from '../assets/images/car.jpg';
 
-const Vehicles = () => {
+const Hostel = () => {
   const dispatch = useDispatch();
   const { items, totalPages, currentPage } = useSelector((state) => state.items);
   const { user } = useSelector((state) => state.profile);
@@ -23,18 +23,6 @@ const Vehicles = () => {
   useEffect(() => {
     dispatch(fetchItems({ query: '', per_page: perPage, currentPage: page }));
   }, [dispatch, page, perPage]);
-
-  const handlePreviousPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (page < totalPages) {
-      setPage(page + 1);
-    }
-  };
 
   const handleDelete = async (id) => {
     try {
@@ -67,11 +55,11 @@ const Vehicles = () => {
      
       <div className="table-fee">
         <div>
-          <span>Finance Fee:</span>
+          <span>Rent Fee:</span>
           <span>&#x20A6;{n.finance_fee}</span>
         </div>
         <div>
-          <span>Option to Purchase Fee:</span>
+          <span>Aggrement Fee:</span>
           <span>&#x20A6;{n.option_to_purchase_fee}</span>
         </div>
         <div>
@@ -126,4 +114,4 @@ const Vehicles = () => {
   );
 };
 
-export default Vehicles;
+export default Hostel;

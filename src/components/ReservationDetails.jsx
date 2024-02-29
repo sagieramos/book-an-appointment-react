@@ -46,7 +46,7 @@ const ReservationDetails = () => {
   return (
     <div>
       <p>
-        Booked for:
+        Reserve for:
         {reservation.reserve_for_use_date}
       </p>
       <p>
@@ -72,7 +72,7 @@ const ReservationDetails = () => {
               {item.description}
             </p>
 
-            <button type="button" onClick={() => navigate(`/item/${item.id}`)}>About Car</button>
+            <button type="button" onClick={() => navigate(`/item/${item.id}`)}>About hostel</button>
           </li>
         ))}
       </ul>

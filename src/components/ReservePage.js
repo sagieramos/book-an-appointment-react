@@ -97,7 +97,7 @@ const ReservePage = () => {
         <>
           <div className="background-image" />
           <div className="content">
-            <h2>{`Book a ${item.name}`}</h2>
+            <h2>{`Rent a ${item.name}`}</h2>
             <p>{item.description}</p>
             <form onSubmit={handleReserve}>
               <input
@@ -107,7 +107,7 @@ const ReservePage = () => {
                 onChange={(e) => setReserveDate(e.target.value)}
               />
               {validationMessage && <p className="error">{validationMessage}</p>}
-              <button type="submit">Book now</button>
+              <button type="submit">Reserve now</button>
             </form>
           </div>
         </>

@@ -99,13 +99,13 @@ const ItemForm = () => {
           </div>
           <div>
             <label htmlFor="item-fee">
-              <span>Finance Fee ($):</span>
+              <span>Rent Fee ($):</span>
               <input id="item-fee" type="number" value={financeFee} onChange={(e) => setFinanceFee(e.target.value)} />
             </label>
           </div>
           <div>
             <label htmlFor="item-option-fee">
-              <span>Option to Purchase Fee ($):</span>
+              <span>Aggrement Fee ($):</span>
               <input id="item-option-fee" type="number" value={optionToPurchaseFee} onChange={(e) => setOptionToPurchaseFee(e.target.value)} />
             </label>
           </div>

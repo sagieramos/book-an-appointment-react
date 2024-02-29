@@ -72,7 +72,7 @@ const ReservationsList = () => {
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Finance Fee</th>
+                <th>Rent Fee</th>
               </tr>
             </thead>
             <tbody>
