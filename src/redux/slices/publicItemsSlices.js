@@ -42,10 +42,12 @@ const publicItemsSlice = createSlice({
   initialState,
   reducers: {
     resetItems: () => initialState,
-    deleteItemById: (state, action) => {
-      state.items = state.items.filter(item => item.id !== action.payload);
-    },
+    deleteItemById: (state, action) => ({
+      ...state,
+      items: state.items.filter((item) => item.id !== action.payload),
+    }),
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(fetchItems.pending, (state) => ({
