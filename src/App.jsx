@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
-import ReservePage from './components/ReservePage';
-import { RotateLoader } from 'react-spinners';
 
 import {
   Routes, Route,
 } from 'react-router-dom';
+import ReservePage from './components/ReservePage';
 import Login from './components/Login';
 import { me } from './redux/slices/profileSlice';
 import Registration from './components/Registration';
@@ -16,14 +15,11 @@ import ItemDetails from './components/ItemDetails';
 import ReservationsList from './components/ReservationList';
 import ReservationDetails from './components/ReservationDetails';
 import NavigationHeader from './components/NavigationHeader';
-import myLogo from './assets/images/logocar.png';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { profile, items, reservations } = useSelector((state) => state);
-  const { user, loading, error } = profile;
-
-  const stillLoading = items.loading || reservations.loading || loading;
+  const { profile } = useSelector((state) => state);
+  const { user, error } = profile;
 
   useEffect(() => {
     dispatch(me());
