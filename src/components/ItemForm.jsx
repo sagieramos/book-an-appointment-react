@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import nigeriaCities from '../nigeriaCities.json';
-import './itemform.css'
+import './itemform.css';
 import api from '../apiDomain.json';
 
 const ItemForm = () => {
@@ -89,10 +89,12 @@ const ItemForm = () => {
           <div>
             <label htmlFor="item-desc">
               <span>Description:</span>
-              <textarea tex id="item-desc" 
-                type="text" value={description} 
+              <textarea
+                id="item-desc"
+                type="text"
+                value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                rows={4} 
+                rows={4}
                 cols={50}
               />
             </label>

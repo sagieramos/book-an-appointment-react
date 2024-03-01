@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AiOutlineDelete } from 'react-icons/ai';
 import { fetchReservations } from '../redux/slices/reservationSlice';
-import { AiOutlineDelete } from "react-icons/ai";
 import api from '../apiDomain.json';
 import './ReservationList.css';
 
 const ReservationsList = () => {
-  
   const { reservations } = useSelector((state) => state.reservations);
   const { user } = useSelector((state) => state.profile);
   const { totalPages } = useSelector((state) => state.reservations);
@@ -68,35 +67,36 @@ const ReservationsList = () => {
 
           {reservation.item_list.length > 0 && (
             <>
-          <table className="item-table-reserved">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Finance Fee</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reservation.item_list.map((item) => (
-                <tr key={item.id}>
-                  <td>{item?.name}</td>
-                  <td>{item?.finance_fee}</td>
-                </tr>
-              ))}
-            </tbody>
-            <div class="reservation-buttons">
-          <button
-            className="more-details"
-            type="button"
-            onClick={() => navigate(`/${user.username}/reservations/${reservation.id}`)}
-          >
-            {' '}
-            More Details
-            {' '}
-          </button>
-          <button className="delete-reservation" type="button" onClick={() => handleDelete(reservation.id)}><AiOutlineDelete /></button>
-        </div>
-            </table>
-            </>)}
+              <table className="item-table-reserved">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Finance Fee</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reservation.item_list.map((item) => (
+                    <tr key={item.id}>
+                      <td>{item?.name}</td>
+                      <td>{item?.finance_fee}</td>
+                    </tr>
+                  ))}
+                </tbody>
+                <div className="reservation-buttons">
+                  <button
+                    className="more-details"
+                    type="button"
+                    onClick={() => navigate(`/${user.username}/reservations/${reservation.id}`)}
+                  >
+                    {' '}
+                    More Details
+                    {' '}
+                  </button>
+                  <button className="delete-reservation" type="button" onClick={() => handleDelete(reservation.id)}><AiOutlineDelete /></button>
+                </div>
+              </table>
+            </>
+          )}
         </div>
       ))}
       <p>
