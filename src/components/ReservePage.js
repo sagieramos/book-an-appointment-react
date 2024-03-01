@@ -16,14 +16,12 @@ const ReservePage = () => {
   const [loading, setLoading] = useState(false);
 
   const { id } = useParams();
-  console.log(id);
 
   useEffect(() => {
     if (!id) return;
     const fetchItem = async () => {
       setLoading(true);
       try {
-        console.log(`${api.apiDomain}/api/v1/p/items/${id}`);
         const response = await axios.get(`${api.apiDomain}/api/v1/p/items/${id}`, {
           headers: {
             Authorization: localStorage.getItem('authorization_token'),
@@ -40,8 +38,6 @@ const ReservePage = () => {
 
     fetchItem();
   }, [id]);
-
-  console.log(item);
 
   const handleReserve = async (e) => {
     e.preventDefault();
