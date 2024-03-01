@@ -47,7 +47,7 @@ const NavigationHeader = () => {
                 <li className="menu-list"><NavLink to="/signup" onClick={handleCheckboxClick}>Signup</NavLink></li>
               </>
             )}
-            {user?.admin && <li className="menu-list"><NavLink to="/items/new" onClick={handleCheckboxClick}>Add New Car</NavLink></li>}
+            {user?.admin && <li className="menu-list"><NavLink to="/items/new" onClick={handleCheckboxClick}>Add New Hostel</NavLink></li>}
             {user && (
               <li className="menu-list">
                 <NavLink to={`/${user?.username}/reservations`} onClick={handleCheckboxClick}>Reservations</NavLink>
@@ -55,7 +55,7 @@ const NavigationHeader = () => {
             )}
             {user?.admin && (
               <li className="menu-list">
-                <NavLink to="/p/items/delete" onClick={handleCheckboxClick}>Delete Car</NavLink>
+                <NavLink to="/p/items/delete" onClick={handleCheckboxClick}>Delete Hostel</NavLink>
               </li>
             )}
             {user && (
