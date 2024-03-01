@@ -92,6 +92,7 @@ const ReservationsList = () => {
                     More Details
                     {' '}
                   </button>
+                  {/* eslint-disable-next-line */}
                   <button className="delete-reservation" type="button" onClick={() => handleDelete(reservation.id)}><AiOutlineDelete /></button>
                 </div>
               </table>

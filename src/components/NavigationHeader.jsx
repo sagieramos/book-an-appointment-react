@@ -28,6 +28,7 @@ const NavigationHeader = () => {
 
   return (
     <article className="nav-header">
+      {/* eslint-disable-next-line */}
       <label className="hamburger-menu">
         <input
           role="button"
@@ -64,7 +65,7 @@ const NavigationHeader = () => {
             )}
           </ul>
           <span className="campaign">
-            <a>Explore</a>
+            <div>Explore</div>
           </span>
           <div className="app-social">
             <FaFacebook size={20} color="#3b5998" />

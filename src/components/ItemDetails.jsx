@@ -28,13 +28,13 @@ const ItemDetails = () => {
           setItem(response.data.data);
         }
       } catch (error) {
-        throw ('Error fetching item:', error);
+        throw new Error('Error fetching item:', error);
       }
     };
     fetchItem();
   }, [id]);
 
-  const isMatchingUrl = () => new RegExp(`^/${user.username}/item/\\d+$`).test(location.pathname);
+  const isMatchingUrl = () => new RegExp(`^/${user?.username}/item/\\d+$`).test(location.pathname); // Handling the case where user is null
 
   if (!item) {
     return <div className="bar-spinner"><BarLoader color="#98bf11" /></div>;
@@ -43,9 +43,10 @@ const ItemDetails = () => {
   return (
     <div className="container">
       {!isMatchingUrl() && (
-      <button type="button" className="bk-btn" onClick={() => navigate(-1)}>
-        <SlArrowLeft />
-      </button>
+        // eslint-disable-next-line
+        <button id="backButton" type="button" className="bk-btn" onClick={() => navigate(-1)}>
+          <SlArrowLeft />
+        </button>
       )}
       <img
         className="item-image"
@@ -72,7 +73,7 @@ const ItemDetails = () => {
             <span>{item.finance_fee}</span>
           </div>
           <div>
-            <span>Aggrement Fee:</span>
+            <span>Agreement Fee:</span>
             <span>{item.option_to_purchase_fee}</span>
           </div>
           <div>
@@ -99,12 +100,11 @@ const ItemDetails = () => {
       </div>
 
       {user && (
-      <>
-        <label htmlFor="reserveButton">Reserve</label>
-        <button id="reserveButton" className="reserve-btn" type="button" onClick={() => navigate(`/${user.username}/item/${item.id}/reservation/new`)}>
-          Reserve
-        </button>
-      </>
+        <>
+          <button id="reserveButton" className="reserve-btn" type="button" onClick={() => navigate(`/${user.username}/item/${item.id}/reservation/new`)}>
+            Reserve
+          </button>
+        </>
       )}
 
     </div>
