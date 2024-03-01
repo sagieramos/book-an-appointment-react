@@ -116,8 +116,8 @@ const Vehicles = () => {
   return (
     <>
       <div className="p-title">
-        <h2>Explore Wonders</h2>
-        <h3>Please reserve a ride</h3>
+        <h2>Get an Hostel</h2>
+        <h3>Please reserve your space</h3>
       </div>
       <Carousel breakPoints={breakPoints} focusOnSelect initialActiveIndex={1}>
         {allItems}

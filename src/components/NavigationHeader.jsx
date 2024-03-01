@@ -39,7 +39,7 @@ const NavigationHeader = () => {
       <aside className={`sidebar ${isChecked ? 'active' : ''}`}>
         <nav className="drop-menu">
           <ul className="menu">
-            <li className="menu-list"><NavLink to="/" onClick={handleCheckboxClick}>Vehicles</NavLink></li>
+            <li className="menu-list"><NavLink to="/" onClick={handleCheckboxClick}>Hostels</NavLink></li>
             {!user && (
               <>
                 <li className="menu-list"><NavLink to="/login" onClick={handleCheckboxClick}>Login</NavLink></li>
@@ -64,7 +64,7 @@ const NavigationHeader = () => {
             )}
           </ul>
           <span className="campaign">
-            <a>Earth Campaign</a>
+            <a>Explore</a>
           </span>
           <div className="app-social">
             <FaFacebook size={20} color="#3b5998" />
